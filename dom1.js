@@ -15,9 +15,9 @@
 
 //GETELEMENTBYID//
 // console.log(document.getElementById('header-title'));
-var headerTitle = document.getElementById('header-title');
-var header=document.getElementById('main-header');
-var h1=document.getElementById('add-item');
+// var headerTitle = document.getElementById('header-title');
+// var header=document.getElementById('main-header');
+// var h1=document.getElementById('add-item');
 
 // console.log(headerTitle);
 // headerTitle.textContent= 'Hello';
@@ -25,8 +25,23 @@ var h1=document.getElementById('add-item');
 // console.log(headerTitle.textContent);
 // console.log(headerTitle.innerText);
 // headerTitle.innerHTML = '<h3>Hello</h3>';
-header.style.borderBottom='solid 3px #000';
-h1.style.color='green';
-h1.innerHTML='<strong>Add Item</strong>';
+// header.style.borderBottom='solid 3px #000';
+// h1.style.color='green';
+// h1.innerHTML='<strong>Add Item</strong>';
 
 
+//GETELEMENTBUCLASSNAME//
+var items = document.getElementsByClassName('list-group-item');
+// console.log(items);
+// console.log(items[1]);
+// items[1].textContent='Hello 2';
+// items[1].style.fontWeight= 'bold';
+// items[1].style.backgroundColor= 'yellow';
+items[2].style.backgroundColor= 'green';
+// items.style.backgroundColor='#f4f4f4';
+// for (var i=0;i<items.length;i++){
+//     items[i].style.backgroundColor='#f4f4f4';
+// }
+for(var i=0;i<items.length;i++){
+items[i].style.fontWeight='bold';
+}
