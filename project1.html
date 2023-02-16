@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>App</title>
+    
+  </head>
+  <body  >
+    
+   
+    
+      <form style="border: 4px solid black;" onSubmit="saveToLocalStorage(event)">
+        <div style="font-size: large;">
+            
+            <h1 >ExpenseTracker app</h1>
+        <div style="padding: 15px;">
+          <label >Choose Expend Amount:</label>
+          <input type="number" name="usermoney" id="usermoneyid" required/>
+        </div>
+    <div style="padding: 15px;">
+          <label >Choose Description:</label>
+          <input type="text" name="Description" id="Descriptionid" required/>
+        </div>
+        <div style="padding: 15px;">
+          <label >Choose a Category:</label>
+          <select class="form-select" name="category" id="categoryId" >
+            <option selected>Choose...</option>
+            <option value="Movie">Movie</option>
+            <option value="Bill">Bill</option>
+            <option value="Ticket">Ticket</option>
+          </select>
+          
+        </div>
+        
+        <button >AddExpense</button>
+        
+    </div>
+      </form>
+    </div>
+      
+    <ul id="listofitems"></ul>
+    <script >
+        function saveToLocalStorage(event){
+            event.preventDefault();
+            var Amount=event.target.usermoney.value;
+            var Title=event.target.Description.value;
+            var Option=event.target.category.value;
+            
+
+            var obj={
+              Amount:Amount,
+            Title:Title,
+            Option:Option
+            }
+             
+            localStorage.setItem(obj.Title,JSON.stringify(obj));
+        
+        showUserOnScreen(obj)    }    
+        function showUserOnScreen(obj){
+            var parentElement=document.getElementById('listofitems');
+            var childElement = document.createElement('li');
+            childElement.textContent=obj.Amount+ ' - ' +obj.Title+ ' - ' +obj.Option;
+            
+            var parentElement=document.getElementById('listofitems');
+            var deleteButton = document.createElement('input');
+            deleteButton.type="button";
+            deleteButton.value='Delete Expense';
+            deleteButton.onclick=()=> {
+                localStorage.removeItem(obj.Title);
+                parentElement.removeChild(childElement);
+            }
+            childElement.appendChild(deleteButton);
+            parentElement.appendChild(childElement);
+
+            
+            var parentElement=document.getElementById('listofitems');
+            var editButton = document.createElement('input');
+            editButton.type="button";
+            editButton.value='Edit Expense';
+            editButton.onclick=()=> {
+                localStorage.removeItem(obj.Title);
+                parentElement.removeChild(childElement);
+                document.getElementById('usermoneyid').value=obj.Amount
+                document.getElementById('Descriptionid').value=obj.Title
+                document.getElementById('categoryId').value=obj.Option
+
+            }
+            childElement.appendChild(editButton);
+            parentElement.appendChild(childElement);
+            }
+
+            
+
+
+
+    </script>
+
+
+  </body>
+</html>
